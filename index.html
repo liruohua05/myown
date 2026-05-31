@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Weekly Founder App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="shell">
+        <aside class="week-rail">
+          <div class="month-brand" id="monthBrand">M</div>
+          <button class="today-button active" type="button" id="todayButton">Today</button>
+          <div class="week-list" id="weekList"></div>
+        </aside>
+
+        <section class="content">
+          <header class="content-header">
+            <p class="eyebrow" id="dateLabel">Today</p>
+            <h1 id="pageTitle">Weekly Status</h1>
+          </header>
+
+          <section class="view active" id="overviewView">
+            <article class="news-panel">
+              <div class="panel-title">
+                <p class="eyebrow">10:00 Briefing</p>
+                <h2>Financial News Top 10</h2>
+              </div>
+              <ol id="newsList"></ol>
+            </article>
+
+            <div class="status-grid">
+              <button class="status-card finance-card" type="button" data-view="finance">
+                <span>Finance</span>
+                <strong id="overviewBalance">CNY 0</strong>
+                <small>This week balance</small>
+              </button>
+              <button class="status-card startup-card" type="button" data-view="startup">
+                <span>Startup</span>
+                <strong id="overviewTodo">0 / 0</strong>
+                <small>Todo completed</small>
+              </button>
+            </div>
+          </section>
+
+          <section class="view" id="financeView">
+            <button class="back-button" type="button" data-view="overview">Back</button>
+            <article class="balance-card">
+              <span>This week balance</span>
+              <strong id="financeBalance">CNY 0</strong>
+              <div>
+                <small id="financeIncome">Income CNY 0</small>
+                <small id="financeExpense">Expense CNY 0</small>
+              </div>
+            </article>
+
+            <form class="finance-form" id="financeForm">
+              <select id="entryType" aria-label="Type">
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+              </select>
+              <input id="entryAmount" type="number" min="0" step="0.01" placeholder="Amount" />
+              <input id="entryNote" type="text" maxlength="32" placeholder="Note" />
+              <button type="submit">Add</button>
+            </form>
+
+            <div class="transaction-list" id="transactionList"></div>
+          </section>
+
+          <section class="view" id="startupView">
+            <button class="back-button" type="button" data-view="overview">Back</button>
+            <label class="field-card">
+              <span>Daily progress</span>
+              <textarea id="progressInput" placeholder="Write today's startup progress, insight, or blockers."></textarea>
+            </label>
+            <div class="todo-panel">
+              <form class="todo-form" id="todoForm">
+                <input id="todoInput" type="text" maxlength="60" placeholder="Add todo" />
+                <button type="submit">Add</button>
+              </form>
+              <div class="todo-list" id="todoList"></div>
+            </div>
+            <p class="save-state" id="saveState">Saved locally</p>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

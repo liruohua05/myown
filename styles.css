@@ -1,0 +1,422 @@
+:root {
+  --bg: #edf1ef;
+  --ink: #1e2421;
+  --muted: #69736d;
+  --line: #dce3dd;
+  --paper: #fbfcf8;
+  --rail: #f2f6f2;
+  --green: #1f7560;
+  --green-soft: #e3f0ea;
+  --blue: #2e638f;
+  --blue-soft: #e5eef7;
+  --red: #ec131e;
+  --active-blue: #3773b3;
+  --rose: #a94b5b;
+  --shadow: 0 24px 70px rgba(30, 42, 35, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, sans-serif;
+  background:
+    linear-gradient(135deg, rgba(31, 117, 96, 0.14), transparent 34%),
+    linear-gradient(315deg, rgba(46, 99, 143, 0.12), transparent 38%),
+    var(--bg);
+  color: var(--ink);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: 82px minmax(0, 1fr);
+  width: min(430px, 100%);
+  min-height: 760px;
+  overflow: hidden;
+  border: 14px solid #151817;
+  border-radius: 32px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.week-rail {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 10px;
+  padding: 16px 8px;
+  border-right: 1px solid var(--line);
+  background: var(--rail);
+}
+
+.month-brand {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 40px;
+  margin: 0 auto;
+  border-radius: 8px;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 900;
+}
+
+.today-button,
+.week-button,
+.sub-tab,
+.back-button {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.today-button {
+  min-height: 38px;
+  background: #fff;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.week-list {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+.week-group {
+  display: grid;
+  gap: 6px;
+}
+
+.week-button {
+  min-height: 40px;
+  background: #fff;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.week-group.active .week-button {
+  background: var(--active-blue);
+  border-color: var(--active-blue);
+  color: var(--red);
+}
+
+.sub-tabs {
+  display: none;
+  gap: 5px;
+  padding-left: 8px;
+  border-left: 2px solid rgba(46, 99, 143, 0.22);
+}
+
+.week-group.active .sub-tabs {
+  display: grid;
+}
+
+.sub-tab {
+  min-height: 28px;
+  background: transparent;
+  border-style: dashed;
+  color: var(--blue);
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.sub-tab.active {
+  background: var(--blue-soft);
+  border-style: solid;
+}
+
+.content {
+  min-width: 0;
+  padding: 22px 18px;
+}
+
+.content-header {
+  margin-bottom: 16px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 25px;
+  line-height: 1.1;
+}
+
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+}
+
+.news-panel,
+.status-card,
+.balance-card,
+.field-card,
+.todo-panel,
+.transaction-item {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.news-panel {
+  min-height: 330px;
+  padding: 15px;
+  background: linear-gradient(180deg, #fff, #eef7f2);
+}
+
+.panel-title h2 {
+  font-size: 21px;
+  line-height: 1.15;
+}
+
+.news-panel ol {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.status-card {
+  display: grid;
+  align-content: space-between;
+  gap: 8px;
+  min-height: 112px;
+  padding: 12px;
+  text-align: left;
+}
+
+.status-card span,
+.balance-card span,
+.balance-card small,
+.field-card span,
+.save-state,
+.transaction-item span,
+.todo-item span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.status-card strong {
+  font-size: 20px;
+}
+
+.finance-card,
+.balance-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), transparent), var(--blue-soft);
+}
+
+.startup-card,
+.field-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), transparent), var(--green-soft);
+}
+
+.back-button {
+  min-height: 32px;
+  padding: 0 10px;
+  margin-bottom: 12px;
+  background: #fff;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.balance-card {
+  display: grid;
+  gap: 11px;
+  padding: 15px;
+  margin-bottom: 12px;
+}
+
+.balance-card strong {
+  font-size: 28px;
+}
+
+.balance-card div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.finance-form,
+.todo-form {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.finance-form {
+  grid-template-columns: 1fr 1fr;
+}
+
+.finance-form input:last-of-type {
+  grid-column: span 2;
+}
+
+.finance-form button,
+.todo-form button {
+  grid-column: span 2;
+  min-height: 38px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--green);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.84);
+  color: var(--ink);
+  outline: 0;
+}
+
+input,
+select {
+  height: 38px;
+  padding: 0 10px;
+}
+
+.transaction-list,
+.todo-list {
+  display: grid;
+  gap: 8px;
+}
+
+.transaction-item,
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 11px;
+}
+
+.amount-income {
+  color: var(--green);
+}
+
+.amount-expense {
+  color: var(--rose);
+}
+
+.field-card {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+}
+
+.field-card textarea {
+  min-height: 280px;
+  padding: 12px;
+  resize: vertical;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.todo-panel {
+  margin-top: 12px;
+  padding: 12px;
+}
+
+.todo-form {
+  grid-template-columns: 1fr auto;
+}
+
+.todo-form button {
+  grid-column: auto;
+  padding: 0 12px;
+}
+
+.todo-item {
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.todo-item label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.todo-item input {
+  width: auto;
+  height: auto;
+}
+
+.todo-item.done span {
+  text-decoration: line-through;
+}
+
+.delete-button {
+  border: 0;
+  background: transparent;
+  color: var(--rose);
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.save-state {
+  margin-top: 10px;
+}
+
+@media (max-width: 460px) {
+  .app {
+    padding: 0;
+  }
+
+  .shell {
+    width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+    border-width: 0;
+  }
+}
