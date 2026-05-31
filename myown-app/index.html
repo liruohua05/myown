@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Founder Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <div class="brand">
+          <div class="brand-mark">M</div>
+          <div>
+            <h1 data-i18n="brandTitle">My Dashboard</h1>
+            <p data-i18n="brandSub">Startup / Life / Money</p>
+          </div>
+        </div>
+
+        <nav class="tabs" role="tablist" aria-label="Sections">
+          <button class="tab-button active" type="button" role="tab" aria-selected="true" data-tab="startup">
+            <span class="tab-icon" aria-hidden="true">^</span>
+            <span data-i18n="tabStartup">Startup</span>
+          </button>
+          <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab="life">
+            <span class="tab-icon" aria-hidden="true">o</span>
+            <span data-i18n="tabLife">Life</span>
+          </button>
+          <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab="money">
+            <span class="tab-icon" aria-hidden="true">Y</span>
+            <span data-i18n="tabMoney">Money</span>
+          </button>
+        </nav>
+      </aside>
+
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" data-i18n="today">Today</p>
+            <h2 id="pageTitle">Startup Review</h2>
+          </div>
+          <div class="date-pill" id="todayLabel"></div>
+        </header>
+
+        <section class="tab-panel active" id="startup" role="tabpanel">
+          <div class="section-grid startup-grid">
+            <article class="panel writing-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Daily Win</p>
+                  <h3 data-i18n="startupGain">Today's startup gain</h3>
+                </div>
+                <button class="icon-button" type="button" id="clearStartup" title="Clear" aria-label="Clear">x</button>
+              </div>
+              <label class="field">
+                <span data-i18n="learnedLabel">What did I learn?</span>
+                <textarea id="learningInput" rows="6"></textarea>
+              </label>
+              <label class="field">
+                <span data-i18n="progressLabel">What moved forward?</span>
+                <textarea id="progressInput" rows="5"></textarea>
+              </label>
+              <label class="field">
+                <span data-i18n="nextLabel">Tomorrow's most important thing</span>
+                <textarea id="nextInput" rows="4"></textarea>
+              </label>
+              <p class="save-state" id="startupSaveState">Saved</p>
+            </article>
+
+            <article class="panel compact-panel">
+              <p class="eyebrow">Focus</p>
+              <h3 data-i18n="startupMetrics">Startup dashboard</h3>
+              <div class="metric-list">
+                <label class="metric-row">
+                  <span data-i18n="leads">Leads</span>
+                  <input id="leadCount" type="number" min="0" inputmode="numeric" value="0" />
+                </label>
+                <label class="metric-row">
+                  <span data-i18n="experiments">Weekly experiments</span>
+                  <input id="experimentCount" type="number" min="0" inputmode="numeric" value="0" />
+                </label>
+                <label class="metric-row">
+                  <span data-i18n="conversations">Useful conversations</span>
+                  <input id="conversationCount" type="number" min="0" inputmode="numeric" value="0" />
+                </label>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="life" role="tabpanel">
+          <article class="empty-state">
+            <div class="empty-symbol">o</div>
+            <h3 data-i18n="lifeTitle">Life module</h3>
+            <p data-i18n="lifeEmpty">This area stays empty for now.</p>
+          </article>
+        </section>
+
+        <section class="tab-panel" id="money" role="tabpanel">
+          <div class="section-grid money-grid">
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Money</p>
+                  <h3 data-i18n="cashflow">Cashflow notes</h3>
+                </div>
+                <button class="primary-button" type="button" id="addTransaction" data-i18n="addTransaction">+ Add</button>
+              </div>
+              <div class="money-summary">
+                <div>
+                  <span data-i18n="income">Income</span>
+                  <strong id="incomeTotal">CNY 0</strong>
+                </div>
+                <div>
+                  <span data-i18n="expense">Expense</span>
+                  <strong id="expenseTotal">CNY 0</strong>
+                </div>
+                <div>
+                  <span data-i18n="balance">Balance</span>
+                  <strong id="balanceTotal">CNY 0</strong>
+                </div>
+              </div>
+              <form class="transaction-form" id="transactionForm">
+                <select id="transactionType" aria-label="Type">
+                  <option value="income" data-i18n="incomeOption">Income</option>
+                  <option value="expense" data-i18n="expenseOption">Expense</option>
+                </select>
+                <input id="transactionAmount" type="number" min="0" step="0.01" />
+                <input id="transactionNote" type="text" maxlength="32" />
+              </form>
+              <div class="transaction-list" id="transactionList"></div>
+            </article>
+
+            <article class="panel news-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">10:00 Briefing</p>
+                  <h3 data-i18n="newsTitle">Financial News Top 10</h3>
+                </div>
+                <a class="text-link" href="https://www.reuters.com/" target="_blank" rel="noreferrer">Reuters</a>
+              </div>
+              <ol class="news-list" id="newsList">
+                <li data-i18n="newsOne">The 10:00 daily briefing is generated by automation.</li>
+                <li data-i18n="newsTwo">Reuters and mainstream financial media are prioritized.</li>
+                <li data-i18n="newsThree">It should cover markets, rates, tech, energy, funding, and macro risk.</li>
+              </ol>
+              <label class="field">
+                <span data-i18n="newsNotesLabel">Today's summary area</span>
+                <textarea id="newsNotes" rows="8"></textarea>
+              </label>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
